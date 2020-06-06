@@ -1,5 +1,4 @@
-#!/usr/bin/env/ruby ruby #"shabeng line"
-
+#!/usr/bin/env ruby
 require_relative '../lib/number_cli.rb'
 
 Pry.start
