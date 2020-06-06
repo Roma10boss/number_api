@@ -15,4 +15,4 @@ class Api
   def self.get_fact_by_id(id)
     res = RestClient.get("#{BASE_URL}#{id}")
     data = JSON.parse(res.body)
-end
+  end
