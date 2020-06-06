@@ -9,7 +9,8 @@ class Cli
   def main
     print_all
     print_selection
-    id = input
+    id = valid_id?(input)
+    get_number_fact(id)
   end
 
   def print_all
@@ -32,6 +33,7 @@ class Cli
     id = id.to_i
     if id < 1 || id > 10
       error
+      sleep 1
       main
     end
     id
@@ -41,5 +43,8 @@ class Cli
     puts "Welcome to my number Cli"
   end
 
+  def get_number_fact(id)
+    Api.get_fact_by_id
+  end
 
 end
