@@ -1,13 +1,17 @@
 class Api
 
-  BASE_URL = 'http://numbersapi.com/'
+  BASE_URL = "http://numbersapi.com/1..100"
 
   def self.get_number
+    #binding.pry
     res = RestClient.get(BASE_URL)
     data = JSON.parse(res.body)
-    data["results"].each do |number|
-      fact = number ['fact']
-      id = number ['url'].split("/")[-1]
+
+    data.each do |number|
+      #binding.pry
+      fact = number[1]
+      id = number[0].to_i
+binding.pry
       Number.new(fact, id)
     end
   end
@@ -16,3 +20,4 @@ class Api
     res = RestClient.get("#{BASE_URL}#{id}")
     data = JSON.parse(res.body)
   end
+end
