@@ -1,0 +1,5 @@
+#!/usr/bin/env/ruby ruby #"shabeng line"
+
+require_relative '../lib/number_cli.rb'
+
+Pry.start
