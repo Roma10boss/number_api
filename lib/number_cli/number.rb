@@ -11,5 +11,9 @@ class Number
     @@all
   end
 
+  def self.find_by_id(id)
+         idx = id.to_i - 1
+         @@all[idx]
+     end
 
 end

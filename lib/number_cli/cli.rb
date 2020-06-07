@@ -9,20 +9,23 @@ class Cli
 
   def menu
     #display everything and ask for the user input
-    print_all
     print_selection
     id = valid_id?(input)
-    get_number_fact(id)
+    x = get_number_fact(id)
+    print_fact(x)
+    print_continue
+    continue?(choice)
+
   end
 
-  def print_all
+  #def print_all
     #print all output
-    Number.all.each{|n| puts "#{n.id}.) #{n.fact}"}
-  end
+    #Number.all.each{|n| puts "#{n.id}.) #{n.fact}"}
+  #end
 
   def print_selection
     #asking the user for a valid input
-    puts "Choose a number from 1 to 10 for a random fact"
+    puts "Choose a number from 1 to 100 for a random fact"
   end
 
   def error
@@ -37,12 +40,25 @@ class Cli
   def valid_id?(id)
     id = id.to_i
     #if there is an invalid entry, it will display the error message and rreturn yo main
-    if id < 1 || id > 10
+    if id < 0 || id > 100
       error
       sleep 1
       menu
     end
+
     id
+
+  end
+
+  def continue?(choice)
+    if choice == 'y'
+      menu
+    else
+      print_goodbye
+      exit
+
+    end
+
   end
 
   def welcome
@@ -50,7 +66,26 @@ class Cli
   end
 
   def get_number_fact(id)
-    Api.get_fact_by_id
-  end
+   num = Number.find_by_id(id)
+   num
+end
+
+def print_continue
+  puts 'Do you want to try again y/n'
+end
+
+def print_goodbye
+  puts "Thanks see you again soon"
+end
+
+def choice
+  gets.chomp
+end
+def print_fact(id)
+  #binding.pry
+  puts "#{id.fact}"
+
+
+end
 
 end

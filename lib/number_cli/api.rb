@@ -11,7 +11,7 @@ class Api
       #binding.pry
       fact = number[1]
       id = number[0].to_i
-binding.pry
+#binding.pry
       Number.new(fact, id)
     end
   end
@@ -20,4 +20,10 @@ binding.pry
     res = RestClient.get("#{BASE_URL}#{id}")
     data = JSON.parse(res.body)
   end
+
+  def self.find_by_id(id)
+          idx = id.to_i - 1
+          @@all[idx]
+  end
+
 end
