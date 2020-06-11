@@ -4,7 +4,9 @@ class Cli
     # Program guide
     welcome
     Api.get_number
+    five
     menu
+
 
   end
 
@@ -37,7 +39,7 @@ class Cli
   def valid_id?(id)
     id = id.to_i
     #if there is an invalid entry, it will display the error message and rreturn yo main
-    if id < 0 || id > 100
+    if id < 1 || id > Number.all.length
       error
       sleep 1
       menu
@@ -83,6 +85,15 @@ class Cli
       exit
 
     end
+  end
+
+  def five
+    Number.all.sample(5).each do |number|
+      puts "#{number.fact}"
+    end
+
+
+
   end
 
   def print_goodbye
